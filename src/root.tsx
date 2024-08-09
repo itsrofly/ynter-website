@@ -1,37 +1,16 @@
-import * as Sentry from "@sentry/browser";
 import { $, component$, useOn, useStyles$ } from "@builder.io/qwik";
 import {
   QwikCityProvider,
   RouterOutlet,
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
+
 import { RouterHead } from "./components/router-head/router-head";
+import { QwikPartytown } from "./components/partytown/partytown";
 import { isDev } from "@builder.io/qwik/build";
 
 import bootstrapStyles from "../node_modules/bootstrap/dist/css/bootstrap.min.css?inline";
 import "./global.css";
-
-Sentry.init({
-  dsn: "https://8755b2e70fccecc82d8b996ec6a8028b@o4507732393525248.ingest.de.sentry.io/4507732398178384",
-  integrations: [
-    Sentry.browserTracingIntegration(),
-    Sentry.browserProfilingIntegration(),
-    Sentry.replayIntegration(),
-  ],
-  // Performance Monitoring
-  tracesSampleRate: 1.0, //  Capture 100% of the transactions
-  // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
-  tracePropagationTargets: ["localhost", /^https:\/\/ynter\.co/],
-  // Session Replay
-  replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
-  replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
-  // Set profilesSampleRate to 1.0 to profile every transaction.
-  // Since profilesSampleRate is relative to tracesSampleRate,
-  // the final profiling rate can be computed as tracesSampleRate * profilesSampleRate
-  // For example, a tracesSampleRate of 0.5 and profilesSampleRate of 0.5 would
-  // results in 25% of transactions being profiled (0.5*0.5=0.25)
-  profilesSampleRate: 1.0,
-});
 
 
 export default component$(() => {
@@ -51,6 +30,8 @@ export default component$(() => {
   return (
     <QwikCityProvider>
       <head>
+
+
         <meta charset="utf-8" />
         {!isDev && (
           <link
@@ -59,8 +40,31 @@ export default component$(() => {
           />
         )}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet"></link>
+        <QwikPartytown forward={['gtag', 'dataLayer.push']} />
+        <script
+          async
+          type="text/partytown"
+          src="https://www.googletagmanager.com/gtag/js?id=G-SPFNFKGQYC"
+        />
+        <script
+          type="text/partytown"
+          dangerouslySetInnerHTML={`
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function() {
+              dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-SPFNFKGQYC');
+          `}
+        />
+
+        <script
+          type="text/partytown"
+          src="https://js-de.sentry-cdn.com/087bf3b5741500c12a2142a12cc57836.min.js"
+          crossOrigin="anonymous"
+        />
         <RouterHead />
       </head>
       <body lang="en">

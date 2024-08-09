@@ -1,9 +1,10 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+
 import Footbar from "~/components/footbar/footbar";
 
 export default component$(() => {
-  myUndefinedFunction();
+  
   return (
     <div class="h-75">
       <div class="d-flex align-items-center justify-content-center h-100 w-100 gap-5">
@@ -60,11 +61,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Ynter",
+  title: "Ynter - Home",
   meta: [
     {
       name: "description",
-      content: "Ynter Home",
+      content: "Home",
     },
   ],
 };

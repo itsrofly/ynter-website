@@ -5,10 +5,10 @@ export const onGet: RequestHandler = async ({ sharedMap, redirect }) => {
     const log = sharedMap.get('user') as User | undefined
 
     // If not logged in return to signin
-    if (!log) {
+    if (log) {
         throw redirect(
             308,
-            "/SignIn"
+            "/Settings"
         );
     }
 }

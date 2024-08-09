@@ -6,21 +6,21 @@ export default component$(() => {
     return (
         <div class="text-center">
 
-                <img class="mt-5" src={Background} alt="success" width={320} height={320} />
-                <h4 class="mt-5">
-                    Login successful, you can close this window and continue using Ynter.
-                </h4>
+            <img class="mt-5" src={Background} alt="success" width={320} height={320} />
+            <h4 class="mt-5">
+                Successful, you can close this window and continue using Ynter.
+            </h4>
 
-            </div>
-            );
+        </div>
+    );
 });
 
-            export const head: DocumentHead = {
-                title: "Ynter",
-            meta: [
-            {
-                name: "description",
-            content: "Ynter Home",
+export const head: DocumentHead = {
+    title: "Ynter - Login Successful",
+    meta: [
+        {
+            name: "description",
+            content: "Login Successful",
         },
-            ],
+    ],
 };

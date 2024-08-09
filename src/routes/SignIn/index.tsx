@@ -41,6 +41,7 @@ export default component$(() => {
             type: "text-danger",
             content: "Unable to send the verification link. Please try again later."
           }
+          console.error(error)
           return;
         }
 
@@ -53,7 +54,7 @@ export default component$(() => {
         <div class="rounded-4 shadow position-absolute top-50 start-50 translate-middle"
           style={{
             backgroundColor: "rgba(217, 217, 217, 0.18)",
-            height: "600px", width: "600px"
+            height: "620px", width: "600px"
           }}>
 
 
@@ -64,7 +65,7 @@ export default component$(() => {
           <div class="d-flex flex-column h-50 align-items-center w-100 gap-2">
             <img class="mb-3" src={Background} alt="loginbg" width={320} height={320} />
 
-            <a class="btn border border-2"
+            <a href="#" class="btn border border-2"
               preventdefault:keydown
               onClick$={async () => {
 
@@ -109,6 +110,13 @@ export default component$(() => {
 
             <div class={message.value.type}>
               {message.value.content}
+              {!message.value.content &&
+                <div class="mt-1 ms-auto me-auto ">
+                  <a href="/Terms" class="text-black link-underline-secondary"
+                    style={{ fontSize: "13px" }}>
+                    Terms apply.
+                  </a>
+                </div>}
             </div>
             {/* Another provider here */}
           </div>
@@ -123,11 +131,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Ynter",
+  title: "Ynter - SignIn",
   meta: [
     {
       name: "description",
-      content: "Ynter Sign In",
+      content: "SignIn",
     },
   ],
 };

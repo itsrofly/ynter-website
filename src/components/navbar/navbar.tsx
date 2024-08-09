@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
-import Person from '~/media/person.svg'
+import Person from '~/media/person.svg';
+import Logo from '~/media/logo.svg';
 import { useUser } from '~/routes/layout';
 
 export default component$(() => {
@@ -8,8 +9,8 @@ export default component$(() => {
         <nav class="navbar sticky-top bg-white border-2 border-bottom border-primary pt-3" style={{ borderColor: "#5FB2FF !important" }}>
             <div class="container-fluid h-100 d-flex justify-content-around align-items-center" style={{ height: "50px" }}>
                 <div>
-                    <a class="nav-link" href="/">
-                        <h5 >Ynter</h5>
+                    <a class="nav-link d-inline-flex gap-3" href="/">
+                    <img src={Logo} alt="logo" height={32} width={32} />
                     </a>
                 </div>
 

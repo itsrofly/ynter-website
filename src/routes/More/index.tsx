@@ -1,10 +1,13 @@
-import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { component$, useSignal } from "@builder.io/qwik";
+import { useNavigate, type DocumentHead } from "@builder.io/qwik-city";
 import Footbar from "~/components/footbar/footbar";
-import { useUser } from "../layout";
+import { handleCheckout, useUser } from "../layout";
 
 export default component$(() => {
-    const log = useUser();
+    const isChecked = useSignal(true);
+    const isLoading = useSignal(false);
+    const nav = useNavigate();
+
     return (
         <div class="h-100">
             {/* Premium */}
@@ -15,25 +18,50 @@ export default component$(() => {
                         Full potential with the Premium, featuring all the exclusive benefits.
 
                         <div class="d-flex flex-row">
-                            <div>
+                            <div class="mt-3">
                                 <br />
                                 • €10/⁠month
                                 <br />
                                 • Cancel anytime
-                            </div>
-                            <div class="ms-auto mt-auto me-5">
-                                <a href={log.value ? "/Settings" : "/SignIn"} class="btn border-2 mt-3 bg-black text-white"
-                                    style={{
-                                        borderColor: "#5FB2FF !important",
-                                        height: "36px"
-                                    }}>
-                                    Get Started
-                                </a>
                                 <br />
-                                <a href="/Terms" class="text-black link-underline-secondary"
+                                <a href="/Terms" class="ms-2 text-black link-underline-secondary"
                                     style={{ fontSize: "13px" }}>
                                     Terms apply.
                                 </a>
+                            </div>
+                            <div class="ms-auto mt-auto me-5 d-flex flex-column"
+                                style={{ width: "200px" }}>
+
+                                <label class="mt-4 switch" >
+                                    <input type="checkbox" checked={isChecked.value}
+                                        onClick$={() => isChecked.value = !isChecked.value
+                                        } />
+                                    <div>
+                                        <span>
+                                            {isChecked.value ? "Yearly " : "Monthly"}
+                                            {isChecked.value &&
+                                                <p class="text-primary bg-info-subtle rounded"
+                                                    style={{ display: "inline" }}>
+                                                    Save 16%
+                                                </p>}
+                                        </span>
+                                    </div>
+                                </label>
+
+                                <button class="btn border-2 mt-3 bg-black text-white"
+                                    disabled={isLoading.value}
+                                    style={{
+                                        borderColor: "#5FB2FF !important",
+                                        height: "36px"
+                                    }}
+                                    onClick$={async () => {
+                                        isLoading.value = true
+                                        const value = await handleCheckout(isChecked.value);
+                                        nav(value as string);
+                                    }}>
+                                    {isLoading.value && <span class="spinner-grow spinner-grow-sm me-2" aria-hidden="true" />}
+                                    Get Started
+                                </button>
                                 <div id="features" />
                             </div>
                         </div>
@@ -148,19 +176,42 @@ export default component$(() => {
                                 • €10/⁠month
                                 <br />
                                 • Cancel anytime
+                                <br />
+                                <a href="/Terms" class="ms-2 text-black link-underline-secondary"
+                                    style={{ fontSize: "13px" }}>
+                                    Terms apply.
+                                </a>
                             </div>
-                            <div class="ms-auto mt-auto me-5">
-                                <a href={log.value ? "/Settings" : "/SignIn"} class="btn border-2 mt-3 bg-black text-white"
+                            <div class="ms-auto mt-auto me-5 d-flex flex-column"
+                                style={{ width: "200px" }}>
+                                <label class="mt-4 switch" >
+                                    <input type="checkbox" checked={isChecked.value}
+                                        onClick$={() => isChecked.value = !isChecked.value
+                                        } />
+                                    <div>
+                                        <span>
+                                            {isChecked.value ? "Yearly " : "Monthly"}
+                                            {isChecked.value &&
+                                                <p class="text-primary bg-info-subtle rounded"
+                                                    style={{ display: "inline" }}>
+                                                    Save 16%
+                                                </p>}
+                                        </span>
+                                    </div>
+                                </label>
+
+                                <a href="#" class="btn border-2 mt-3 bg-black text-white"
                                     style={{
                                         borderColor: "#5FB2FF !important",
                                         height: "36px"
+                                    }}
+                                    onClick$={async () => {
+                                        isLoading.value = true
+                                        const value = await handleCheckout(isChecked.value);
+                                        nav(value as string);
                                     }}>
+                                    {isLoading.value && <span class="spinner-grow spinner-grow-sm me-2" aria-hidden="true" />}
                                     Get Started
-                                </a>
-                                <br />
-                                <a href="/Terms" class="text-black link-underline-secondary"
-                                    style={{ fontSize: "13px" }}>
-                                    Terms apply.
                                 </a>
                             </div>
                         </div>
@@ -251,11 +302,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-    title: "Ynter",
+    title: "Ynter - More",
     meta: [
         {
             name: "description",
-            content: "Ynter More",
+            content: "More",
         },
     ],
 };

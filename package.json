@@ -1,6 +1,6 @@
 {
-  "name": "my-qwik-empty-starter",
-  "description": "Blank project with routing included",
+  "name": "ynter-website",
+  "description": "Ynter Website Project",
   "engines": {
     "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
   },
@@ -15,6 +15,7 @@
     "build": "qwik build",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
+    "build.server": "vite build -c adapters/fastify/vite.config.ts",
     "build.types": "tsc --incremental --noEmit",
     "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
     "dev": "vite --mode ssr",
@@ -23,10 +24,12 @@
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
     "preview": "qwik build preview && vite preview --open",
+    "serve": "node server/entry.fastify",
     "start": "vite --open --mode ssr",
     "qwik": "qwik"
   },
   "devDependencies": {
+    "@builder.io/partytown": "^0.8.1",
     "@builder.io/qwik": "^1.7.1",
     "@builder.io/qwik-city": "^1.7.1",
     "@types/bootstrap": "5",
@@ -34,6 +37,7 @@
     "@types/node": "^20.12.7",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
+    "dotenv": "^16.3.2",
     "eslint": "^8.57.0",
     "eslint-plugin-qwik": "^1.7.1",
     "prettier": "^3.2.5",
@@ -43,9 +47,16 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "dependencies": {
+    "@customerio/cdp-analytics-node": "^0.2.0",
+    "@fastify/compress": "^6.2.1",
+    "@fastify/static": "^6.10.1",
     "@sentry/browser": "^8.24.0",
+    "@sentry/cli": "^2.33.1",
     "@supabase/ssr": "^0.4.0",
     "@supabase/supabase-js": "^2.45.1",
-    "bootstrap": "5"
+    "bootstrap": "5",
+    "fastify": "^4.17.0",
+    "fastify-plugin": "^4.5.0",
+    "stripe": "^16.6.0"
   }
 }
