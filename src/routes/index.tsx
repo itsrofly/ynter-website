@@ -8,19 +8,23 @@ import AppImage from "~/media/App.png";
 export default component$(() => {
   return (
     <div class="h-75">
-      <div class="d-flex align-items-center justify-content-center h-100 w-100 gap-5">
+      <div
+        class="d-flex align-items-center justify-content-center h-100 w-100 gap-5"
+        id="section"
+      >
         <div
           class="d-flex flex-column align-items-start gap-3"
           style={{ width: "400px", height: "400px" }}
+          id="section-text-area"
         >
-          <h5>The Best Way to Simplify Your Finances</h5>
+          <h5>The Best Way to Simplify Your Finances.</h5>
           <h5 class="mt-3" style={{ fontWeight: 300 }}>
             {/* Text Here */}
             .............................. ..............................
             .............................. ..............................
             .............................. ..............................
             .............................. ..............................
-            .............................. ............
+            ..............................
           </h5>
 
           <p class="d-inline-flex gap-3 mt-auto ms-4">
@@ -44,15 +48,18 @@ export default component$(() => {
             </a>
           </p>
         </div>
-        <div class="ms-5 d-flex flex-column justify-content-center ps-5">
+        <div
+          class="ms-5 d-flex flex-column justify-content-center ps-5 section-image-area-disable"
+          id="section-image-parent"
+        >
           <img
-            class="ms-5 rounded shadow-lg border border-2 border-primary img-animation"
+            class="ms-5 rounded shadow-lg border border-2 border-primary img-animation section-image-area-disable"
+            id="section-image-area"
             src={AppImage}
             alt="app"
             height={400}
             width={590.8}
           />
-          {/* Image Here */}
         </div>
       </div>
 

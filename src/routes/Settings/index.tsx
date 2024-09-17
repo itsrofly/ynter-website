@@ -100,7 +100,9 @@ export default component$(() => {
       <h3>Settings</h3>
       <div
         class="border border-2 rounded d-flex flex-column gap-2"
-        style={{ height: "280px", width: "500px" }}
+        style={{ height: "280px", 
+          width: "90%", maxWidth: "500px"
+         }}
       >
         <h5 class="mt-4 ms-4">Your Plan</h5>
 
@@ -175,7 +177,7 @@ export default component$(() => {
 
       <div
         class="border border-2 rounded d-flex flex-column gap-2"
-        style={{ height: "250px", width: "500px" }}
+        style={{ height: "250px", width: "90%", maxWidth: "500px" }}
       >
         <h5 class="mt-4 ms-4">Account</h5>
         <div class="ms-5 d-inline-flex gap-2">

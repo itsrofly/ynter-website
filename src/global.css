@@ -108,3 +108,38 @@ body {
     }
   }
 }
+
+@media (max-width: 600px) {
+  #section {
+    flex-direction: column !important;
+  }
+
+  #section-text-area {
+    width: 300px !important;
+    height: 280px !important;
+    margin-bottom: 0 !important;
+  }
+
+  #benefits-text {
+    font-size: 15px !important;
+  }
+
+  #get-started {
+    width: 100px !important;
+  }
+
+  .section-image-area-disable {
+    display: none !important;
+  }
+
+  #section-image-area {
+    width: 300px !important;
+    height: 203.4px !important;
+    margin-left: auto !important;
+  }
+
+  #section-image-parent {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+}

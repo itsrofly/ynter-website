@@ -54,7 +54,8 @@ export default component$(() => {
         <div class="rounded-4 shadow position-absolute top-50 start-50 translate-middle"
           style={{
             backgroundColor: "rgba(217, 217, 217, 0.18)",
-            height: "620px", width: "600px"
+            height: "620px", 
+            width: "80%", maxWidth: "600px"
           }}>
 
 

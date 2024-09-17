@@ -15,14 +15,15 @@ export default component$(() => {
       {/* Premium */}
       <div
         class="w-100 d-flex justify-content-center"
-        style={{ marginBottom: "300px" }}
+        style={{ marginBottom: "200px" }}
       >
-        <div class="mt-5" style={{ width: "500px", height: "400px" }}>
+        <div class="mt-5" style={{ width: "500px", height: "400px" }}
+        id="section-text-area">
           <h5 class="mt-5 text-center me-5">All Ynter.</h5>
           <h5 class="mt-5" style={{ fontWeight: 300 }}>
             Full potential with the Premium, featuring all the exclusive
             benefits.
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row" id="benefits-text">
               <div class="mt-3">
                 <br />
                 • €10/⁠month
@@ -39,6 +40,7 @@ export default component$(() => {
               </div>
               <div
                 class="ms-auto mt-auto me-5 d-flex flex-column"
+                id="get-started"
                 style={{ width: "200px" }}
               >
                 <label class="mt-4 switch">
@@ -97,12 +99,14 @@ export default component$(() => {
       <div
         class="d-flex align-items-center justify-content-center w-100 gap-5 mt-5"
         style={{ marginBottom: "400px" }}
+        id="section"
       >
         <div
+        id="section-text-area"
           class="d-flex flex-column align-items-start"
           style={{ width: "400px", height: "400px" }}
         >
-          <h5>Feature</h5>
+          <h5>Feature.</h5>
           <h5 class="mt-3" style={{ fontWeight: 300 }}>
             {/* Text Here */}
             .............................. ..............................
@@ -112,9 +116,11 @@ export default component$(() => {
             .............................. ............
           </h5>
         </div>
-        <div class="ms-5 d-flex flex-column justify-content-center">
+        <div class="ms-5 d-flex flex-column justify-content-center"
+        id="section-image-parent">
           <img
-            class="ms-5 rounded shadow-lg border img-animation"
+            class="ms-5 rounded shadow-lg border img-animation border border-2 border-primary"
+            id="section-image-area"
             src={AppImage}
             alt="app"
             height={400}
@@ -128,10 +134,13 @@ export default component$(() => {
       <div
         class="d-flex align-items-center justify-content-center w-100 gap-5 mt-5"
         style={{ marginBottom: "400px" }}
+                id="section"
       >
-        <div class="d-flex flex-column justify-content-center">
+        <div class="d-flex flex-column justify-content-center"
+        id="section-image-parent">
           <img
-            class="ms-5 rounded shadow-lg border img-animation"
+            class="ms-5 rounded shadow-lg border img-animation border border-2 border-primary"
+            id="section-image-area"
             src={AppImage}
             alt="app"
             height={400}
@@ -142,8 +151,9 @@ export default component$(() => {
         <div
           class="ms-5 d-flex flex-column align-items-start"
           style={{ width: "400px", height: "400px" }}
+                  id="section-text-area"
         >
-          <h5>Feature</h5>
+          <h5>Feature.</h5>
           <h5 class="mt-3" style={{ fontWeight: 300 }}>
             {/* Text Here */}
             .............................. ..............................
@@ -156,12 +166,14 @@ export default component$(() => {
       </div>
 
       {/*  Third Feature */}
-      <div class="d-flex align-items-center justify-content-center w-100 gap-5 mt-5 mb-5">
+      <div class="d-flex align-items-center justify-content-center w-100 gap-5 mt-5 mb-5"
+          id="section">
         <div
           class="d-flex flex-column align-items-start"
           style={{ width: "400px", height: "400px" }}
+                            id="section-text-area"
         >
-          <h5>Feature</h5>
+          <h5>Feature.</h5>
           <h5 class="mt-3" style={{ fontWeight: 300 }}>
             {/* Text Here */}
             .............................. ..............................
@@ -171,9 +183,11 @@ export default component$(() => {
             .............................. ............
           </h5>
         </div>
-        <div class="ms-5 d-flex flex-column justify-content-center">
+        <div class="ms-5 d-flex flex-column justify-content-center"
+        id="section-image-parent">
           <img
-            class="ms-5 rounded shadow-lg border img-animation"
+            class="ms-5 rounded shadow-lg border img-animation border border-2 border-primary"
+             id="section-image-area"
             src={AppImage}
             alt="app"
             height={400}
@@ -185,12 +199,13 @@ export default component$(() => {
 
       {/* Premium */}
       <div class="w-100 d-flex justify-content-center mt-5 mb-5">
-        <div class="mt-5" style={{ width: "500px", height: "400px" }}>
+        <div class="mt-5" style={{ width: "500px", height: "400px" }} 
+        id="section-text-area">
           <h5 class="mt-5 text-center me-5">Get premium started.</h5>
           <h5 class="mt-5" style={{ fontWeight: 300 }}>
             Interested in all these features, get them all and more with
             premium.
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row" id="benefits-text">
               <div>
                 <br />
                 • €10/⁠month
@@ -207,6 +222,7 @@ export default component$(() => {
               </div>
               <div
                 class="ms-auto mt-auto me-5 d-flex flex-column"
+                id="get-started"
                 style={{ width: "200px" }}
               >
                 <label class="mt-4 switch">
