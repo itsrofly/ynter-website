@@ -59,6 +59,7 @@
     "bootstrap": "5",
     "fastify": "^4.17.0",
     "fastify-plugin": "^4.5.0",
+    "plaid": "^28.0.0",
     "stripe": "^16.6.0"
   }
 }

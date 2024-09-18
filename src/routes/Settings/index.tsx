@@ -10,6 +10,7 @@ import {
 } from "../layout";
 import { createClient } from "@supabase/supabase-js";
 import Stripe from "stripe";
+import { Configuration, PlaidEnvironments, PlaidApi } from "plaid";
 
 const supabase = createBrowserClient(
   import.meta.env.PUBLIC_SUPABASE_URL,
@@ -18,6 +19,18 @@ const supabase = createBrowserClient(
 
 export const handleDeleteUser = server$(async function (id) {
   const serverThis = this;
+
+  // Set up the Plaid client library
+  const plaidConfig = new Configuration({
+    basePath: PlaidEnvironments[serverThis.env.get("PLAIDENV")!],
+    baseOptions: {
+      headers: {
+        "PLAID-CLIENT-ID": serverThis.env.get("PLAID_CLIENT_ID")!,
+        "PLAID-SECRET": serverThis.env.get("PLAID_SECRET")!,
+      },
+    },
+  });
+  const plaidClient = new PlaidApi(plaidConfig);
 
   // Never use SECRET KEY with createServerClient, supabase helper may leak the key
   // Always use createClient only
@@ -34,13 +47,35 @@ export const handleDeleteUser = server$(async function (id) {
     error,
   } = await supabase_secret.auth.admin.getUserById(id);
 
-  if (user) {
-    // Step 1: Find all Stripe customers by the user's email
+  // Fetch user data
+  const fetchUser = await supabase_secret
+    .from("accounts")
+    .select("customer_id")
+    .eq("id", id);
+
+  if (user && fetchUser.data) {
+    // Fetch all connected institutions
+    const fetchToken = await supabase_secret
+      .from("tokens")
+      .select()
+      .eq("customer_id", fetchUser.data[0].customer_id as string);
+
+    // Step 1: Remove all institution
+    if (fetchToken.data) {
+      for (let i = 0; i < fetchToken.data.length; i++) {
+        const bankData = fetchToken.data[i];
+        await plaidClient.itemRemove({
+          access_token: bankData.access_token,
+        });
+      }
+    }
+
+    // Step 2: Find all Stripe customers by the user's email
     const customers = await stripe.customers.list({
       email: user.email,
     });
 
-    // Step 2: Delete all found customers
+    // Step 3: Delete all found customers
     const deletePromises = customers.data.map(async (customer) => {
       try {
         await stripe.customers.del(customer.id);
@@ -56,7 +91,7 @@ export const handleDeleteUser = server$(async function (id) {
     // Wait for all delete operations to finish
     await Promise.all(deletePromises);
 
-    // Step 3: Delete the user from Supabase
+    // Step 4: Delete the user from Supabase
     const { error: deleteError } = await supabase_secret.auth.admin.deleteUser(
       user.id,
       false
@@ -100,9 +135,7 @@ export default component$(() => {
       <h3>Settings</h3>
       <div
         class="border border-2 rounded d-flex flex-column gap-2"
-        style={{ height: "280px", 
-          width: "90%", maxWidth: "500px"
-         }}
+        style={{ height: "280px", width: "90%", maxWidth: "500px" }}
       >
         <h5 class="mt-4 ms-4">Your Plan</h5>
 
