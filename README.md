@@ -1,10 +1,16 @@
 # Ynter Website ⚡️
 This site was made specifically for the [Ynter app](), on this website you can download the [Ynter app](), start a premium subscription, and manage your user account.
 
+<p align="center">
+    <img src="https://github.com/itsrofly/ynter-website/blob/main/Website.png"/>
+</p>
+
 ## External Technologies
  - Database & Sign in - [Supabase](https://supabase.com/docs/guides/database/overview) (Postgresql)
  - Payment Service Provider - [Stripe](https://docs.stripe.com/)
  - Manage Users Transactions - [Plaid](https://plaid.com/en-eu/products/transactions/)
+ - Google Analytics
+ 
 
 
 ## Project Structure
