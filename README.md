@@ -1,5 +1,5 @@
 # Ynter Website ⚡️
-This site was made specifically for the [Ynter app](), on this website you can download the [Ynter app](), start a premium subscription, and manage your user account.
+This site was made specifically for the [Ynter app](https://github.com/itsrofly/ynter-website/releases/tag/Distribution), on this website you can download the [Ynter app](https://github.com/itsrofly/ynter-website/releases/tag/Distribution), start a premium subscription, and manage your user account.
 
 <p align="center">
     <img src="https://github.com/itsrofly/ynter-website/blob/main/Website.png"/>
