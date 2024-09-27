@@ -1,12 +1,11 @@
-# Qwik City App ⚡️
+# Ynter Website ⚡️
+This site was made specifically for the [Ynter app](), on this website you can download the [Ynter app](), start a premium subscription, and manage your user account.
 
-- [Qwik Docs](https://qwik.dev/)
-- [Discord](https://qwik.dev/chat)
-- [Qwik GitHub](https://github.com/QwikDev/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
+## External Technologies
+ - Database & Sign in - [Supabase](https://supabase.com/docs/guides/database/overview) (Postgresql)
+ - Payment Service Provider - [Stripe](https://docs.stripe.com/)
+ - Manage Users Transactions - [Plaid](https://plaid.com/en-eu/products/transactions/)
 
----
 
 ## Project Structure
 
@@ -30,12 +29,22 @@ Inside your project, you'll see the following directory structure:
 
 - `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
 
-## Add Integrations and deployment
 
-Use the `npm run qwik add` command to add additional integrations. Some examples of integrations includes: Cloudflare, Netlify or Express Server, and the [Static Site Generator (SSG)](https://qwik.dev/qwikcity/guides/static-site-generation/).
+## Prerequisites
+Set up environment variables
 
-```shell
-npm run qwik add # or `yarn qwik add`
+ - `.env.local`: 
+ ```
+    PUBLIC_SUPABASE_URL=
+    PUBLIC_SUPABASE_ANON=
+    SUPABASE_SECRET=
+    STRIPE_API_KEY=
+    MONTHLY_PRICE_ID=
+    YEARLY_PRICE_ID=
+    DOMAIN=http://localhost
+    PLAID_CLIENT_ID=
+    PLAID_SECRET=
+    PLAIDENV=
 ```
 
 ## Development
